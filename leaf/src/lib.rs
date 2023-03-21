@@ -282,6 +282,10 @@ pub fn shutdown(key: RuntimeId) -> bool {
     false
 }
 
+pub fn is_running(key: RuntimeId) -> bool {
+    RUNTIME_MANAGER.lock().unwrap().contains_key(&key)
+}
+
 pub fn test_config(config_path: &str) -> Result<(), Error> {
     config::from_file(config_path)
         .map(|_| ())
